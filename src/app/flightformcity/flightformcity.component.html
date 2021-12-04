@@ -1,0 +1,25 @@
+<div *ngIf="flightsavailable">
+    <!-- <div  *ngIf="isloading" style="text-align: center;margin-top: 30px;"> 
+        <app-spinner></app-spinner> 
+    </div>  -->
+    <div [hidden] = "isloading">
+    <h3>Flights going in the city:</h3>
+    <p>Click the link to edit the flight</p>
+    
+        <!-- <mat-selection-list #shoes [multiple]="false">
+          <mat-list-option *ngFor="let flight of flights" [value]="flight" >
+           
+            FlightNumber:{{flight.flightnumber}}<a (click)="onselect(flight)">Edit</a>  
+  
+          </mat-list-option>
+        </mat-selection-list> -->
+        <div class="col-xs-8">
+        <ul class="list-group list-group-flush">
+
+          <li class="list-group-item" *ngFor="let flight of flights" [value]="flight"> FlightNumber:{{flight.flightnumber}}
+           <a (click)="onselect(flight)" style="cursor: pointer;">Edit</a>  </li>
+          
+        </ul>
+        </div>
+    </div>
+</div>

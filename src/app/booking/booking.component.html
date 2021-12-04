@@ -1,0 +1,21 @@
+<div [hidden]="bookcomponent">
+  <div  *ngIf="isloading" style="text-align: center;margin-top: 30px;"> 
+    <app-spinner></app-spinner> 
+  </div> 
+<div class="heading"[hidden]="isloading"><h2>Select the flight you want to book</h2></div>
+<br>
+<div class="row">
+    <div class="col-sm-5" *ngFor="let flight of flights; let i =index">
+            <a class="btn btn-success" (click)="onflightselect(i)">Flight-{{flight.flightnumber}}</a>
+            <div class="row">Source:{{flight.source}}</div>
+            <div class="row">Destination:{{flight.destination}}</div> 
+            <div class="row">Days of travel:{{flight.daysoftravel}}</div>
+    </div> 
+
+</div>
+
+<!-- <button *ngFor="let flight of flights; let i =index"></button>  -->
+
+<!-- <button class=" bton btn btn-success" *ngIf ="!bookflight102" (click)="onFlight101()">FLIGHT-101</button>
+<button class="bton btn btn-primary" *ngIf ="!bookflight101" (click)="onFlight102()">FLIGHT-102</button> -->
+

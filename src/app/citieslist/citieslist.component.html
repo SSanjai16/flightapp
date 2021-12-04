@@ -1,0 +1,12 @@
+<div  *ngIf="isloading" style="text-align: center;margin-top: 30px;"> 
+   <app-spinner></app-spinner> 
+ </div> 
+ <div [hidden]="isloading">
+ <h3 *ngIf="!selectedcity">Select a city to display the flights going in the city</h3>
+        <ul class="cities">
+            <li *ngFor="let city of cities"
+            (click)="onSelect(city)" [class.selected]="city === selectedcity">
+               {{city.cityname}}
+            </li>
+          </ul>
+         </div>

@@ -1,0 +1,253 @@
+ 
+
+
+<!-- <table class="table table-striped" *ngIf="!isloading"> -->
+  <!-- <div class="searchbar" > -->
+  <!-- <form #f="ngForm" (ngSubmit)="onsubmit(f)"> -->
+    <!-- <input type="text" id="searchthis" name="searchthis" placeholder="enter the name"> -->
+    <!-- <mat-form-field>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" name="flightnum" placeholder="flightnum" class="search-input">
+  </mat-form-field> -->
+  <!-- <label for="site-search">Search the flight</label> -->
+  <!-- <input type="number" id="flightsearch" name="flightsearch" placeholder="flight num" ngModel
+  aria-label="Search through site content" pattern="^[1-9]+[0-9]*$">
+
+  <button type="submit">Search</button>
+  </form> -->
+  <!-- <input type="text" placeholder="Search" [(ngModel)]="term"> -->
+<!-- </div> -->
+  <!-- <table class="table table-striped" *ngIf="!isloading">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Flight-Num</th>
+        <th scope="col">Meals Preference</th>
+        <th scope="col">Travel Class</th>
+        <th scope="col">Tickets</th>
+        <th scope="col">Billing Amount</th>
+        <th scope="col">Date of Booking</th>
+         <th><a style="cursor: pointer;" class="btn btn-success" (click)="onPastBooking()">Show Past Bookings</a></th> 
+      
+      </tr>
+    </thead> -->
+    <!-- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" > -->
+
+      <!-- Position Column -->
+      <!-- <ng-container matColumnDef="position"> -->
+        <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container> -->
+    
+      <!-- Name Column -->
+      <!-- <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+      </ng-container> -->
+    
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+     -->
+      <!-- Symbol Column -->
+      <!-- <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S </th>
+        <td mat-cell *matCellDef="let element"> {{element.flight}} </td>
+      </ng-container>
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sl </th>
+        <td mat-cell *matCellDef="let element"> {{element.meals}} </td>
+      </ng-container>
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sol </th>
+        <td mat-cell *matCellDef="let element"> {{element.travelclass}} </td>
+      </ng-container>
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Smbol </th>
+        <td mat-cell *matCellDef="let element"> {{element.tickets}} </td>
+      </ng-container> 
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Saymbol </th>
+        <td mat-cell *matCellDef="let element"> {{element.bookingamount}} </td>
+      </ng-container>
+     -->
+    
+      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> -->
+    <!-- <tbody>
+      <tr *ngFor="let booking of bookings| filter:term | paginate:{itemsPerPage: 7,currentPage:p} ; let i =index " [ngClass]="{displayinvalid:booking.validationstatus==='invalid'}">
+        <td>{{booking.id}}</td>
+        <td>{{booking.userid}}</td>
+        <td>{{booking.name}}</td>
+        <td>{{booking.flight}}</td> 
+        <td>{{booking.meals}}</td>
+        <td>{{booking.travelclass}}</td>
+        <td>{{booking.tickets}}</td>
+        <td>{{booking.amount}}</td>
+        <td>{{booking.dateofbooking}}</td>
+     <td><a style="cursor: pointer;" class="btn btn-danger" (click)="onDeleteBooking(i)">{{booking.validationstatus==='invalid'?'Cancel Invalid Booking':'Cancel Booking'}}</a></td> -->
+        <!-- <td><a *ngIf="booking.validationstatus==='valid'" style= "cursor : pointer;" class="btn btn-danger"(click)="onDeleteBooking(i)">CANCEL BOOKING</a></td> 
+      </tr>
+    </tbody>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </table> -->
+
+  <!-- <div class="warning" *ngIf="!isloading">Bookings displayed in red are invalid.</div> -->
+  <!-- <div [hidden]="isloading"> -->
+    <div class="row" > 
+      <div class="col-sm-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Select the booking class</mat-label>
+          <mat-select [(value)]="selectedclass">
+            <mat-option value="null" (click)="onselectclass(selectedclass)">All</mat-option>
+            <mat-option value="economy" (click)="onselectclass(selectedclass)">Economy Class</mat-option>
+            <mat-option value="business" (click)="onselectclass(selectedclass)">Business Class</mat-option>
+          </mat-select>
+        </mat-form-field>  
+      </div>
+      <div class="col-sm-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Select Meal Preference</mat-label>
+          <mat-select [(value)]="selectedmeal">
+            <mat-option value="null" (click)="onselectclass(selectedmeal)">All</mat-option>
+            <mat-option value="yes" (click)="onselectclass(selectedmeal)">Yes</mat-option>
+            <mat-option value="no" (click)="onselectclass(selectedmeal)">No</mat-option>
+          </mat-select>
+        </mat-form-field>  
+      </div>     
+      <div class="col-sm-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Select Validation Status</mat-label>
+          <mat-select [(value)]="selectedvalid">
+            <mat-option value="null" (click)="onselectclass(selectedvalid)">All</mat-option>
+            <mat-option value="valid" (click)="onselectclass(selectedvalid)">Valid</mat-option>
+            <mat-option value="invalid" (click)="onselectclass(selectedvalid)">Invalid</mat-option>
+          </mat-select>
+        </mat-form-field>  
+      </div> 
+      <div class="col-sm-3">
+<mat-form-field>
+  <mat-label>Search</mat-label>
+   <input matInput placeholder="" (keyup)="applyFilter($event)"> 
+  <!-- <input type="text" placeholder="Search" #input> -->
+</mat-form-field>
+<span class="help-block" *ngIf="!greaterthan2">Please Enter atleast 2 characters!</span>
+</div>
+</div>
+<!-- <div [hidden]="isloading" >
+  <mat-paginator [length]="length"
+                 [pageIndex]="index"
+            [pageSize]="size"
+            [pageSizeOptions]="[2,5,10,25,50]"
+            (page)="onPaginateChange($event)">
+  </mat-paginator> 
+  </div>  -->
+  <div class="page">
+    
+    <a (click)="paginate(index-1)" [hidden]="isfirstpage">&laquo;</a>
+    <a>Page : {{  index  }}</a>
+    <a (click)="paginate(index+1)" [hidden]="islastpage">&raquo;</a>
+  </div>
+
+<div class="t"> 
+  <mat-table [dataSource]="dataSource" matSort matSortActive="dateofbooking" matSortDirection="asc">
+    <!-- <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let bookings"
+      [innerHTML]="bookings.id | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container> -->
+    <ng-container matColumnDef="userid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">User-Id</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.userid | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Name</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.name | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Flight</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.flight | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="meals">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Meals</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.meals | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="travelclass">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Travel Class</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.travelclass | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tickets">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Tickets</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.tickets | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Amount</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.amount | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dateofbooking">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Date of Booking</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.dateofbooking | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="validationstatus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="header">Validation Status</mat-header-cell>
+      <mat-cell *matCellDef="let bookings" 
+      [innerHTML]="bookings.validationstatus | highlightTablesearch: valuehighlight" [ngClass]="{'displayinvalid' : bookings.validationstatus=='invalid'}"></mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky : true" (click)="scrollToTop()"></mat-header-row> 
+    
+    
+    <mat-row *matRowDef="let row; columns:displayedColumns;"
+            > </mat-row>
+    </mat-table>
+  </div>
+  <div  *ngIf="isloading" style="text-align: center;margin-top: 30px;"> 
+    <app-spinner></app-spinner> 
+  </div> 
+    <div *ngIf="isclientsearch">
+      <a (click)="searchmore()" style="cursor:pointer">Search for More Results</a>
+    </div>
+    <div [hidden]="isTableHasData" class="nodata">
+      No Results Found
+     </div>
+     <!-- <div [hidden]="isloading">
+      <mat-paginator [length]="length" 
+                [pageSize]="size"
+                [pageIndex]="index"
+                [pageSizeOptions]="[2,5,10,25,100]" 
+                >
+    </mat-paginator> 
+  </div> -->
+  <div class="page">
+   
+    <a (click)="paginate(index-1)" [hidden]="isfirstpage">&laquo;</a>
+    <a>Page : {{  index  }}</a>
+    <a (click)="paginate(index+1)" [hidden]="islastpage">&raquo;</a>
+  </div>
+ <div class="arrow" [hidden]="isloading" *ngIf="isTableHasData && isShow">
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    (click)="scrollToTop()"
+    style="cursor:pointer">arrow_upward</mat-icon>
+  </div>
+
+ 
+
+
+ 
+
+

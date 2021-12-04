@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse" *ngIf="authservice.isloggedin()">
+    <!-- Navbar content -->
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">FLIGHT BOOKING</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" >
+                <li routerLinkActive="active"><a  routerLink="/booking">BOOKING</a></li>
+                <!-- <li><a routerLinkActive="active" routerLink="/cancellation">CANCELLATION</a></li> -->
+                <li routerLinkActive="active"><a  routerLink="/summary">SUMMARY</a></li>
+                <li routerLinkActive="active"><a routerLink="/history">HISTORY</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" >
+                <div *ngIf="authservice.isadmin()"></div>
+                <li routerLinkActive="active" *ngIf="authservice.isadmin()"><a routerLink="/users">USERS</a></li>
+                <li routerLinkActive="active"  *ngIf="authservice.isadmin()"><a routerLink="/cities">CITIES</a></li>
+                <li class="dropdown" appDropDown *ngIf="authservice.isadmin()" >
+                    <a style="cursor: pointer;" class="dropdown-toggle" role="button" >MANAGE FLIGHTS <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="drop-down-item" style="cursor: pointer;" routerLinkActive="active" routerLink="/addflight">ADD FLIGHT</a></li>
+                        <li><a class="drop-down-item" style="cursor: pointer;"routerLinkActive="active" routerLink="/editflight">EDIT FLIGHT</a></li>
+                        <li><a class="drop-down-item" style="cursor: pointer;"routerLinkActive="active" routerLink="/deleteflight">DELETE FLIGHT</a></li>     
+                    </ul>
+                </li>
+            
+                <li class="nav navbar-nav navbar-right"><a routerLinkActive="active" routerLink="/logout">LOG OUT</a></li>  
+            </ul>
+            
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,98 @@
+.displayinvalid
+{
+    color:red;
+}
+.warning
+{
+    text-align: center;
+    margin-top: 100px;
+}
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+.searchbar
+{
+    margin-top: 0;
+    display: flex; 
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+.mat-form-field
+{
+    margin-right: 20px;
+    display: flex; 
+    justify-content: flex-end;
+}
+.nodata
+{
+    text-align:center;
+    color:red;
+}
+.help-block
+{
+    margin-right: 20px;
+    display: flex; 
+    justify-content: flex-end;
+    color: red;
+}
+.arrow
+{
+    color: rgb(7, 123, 255);
+    position: fixed;
+    bottom: 5px;
+}
+.header
+{
+    color:black;
+    font-size:small;
+    font-weight: bold;
+}
+table {
+    position: relative;
+    /* width: 100%; */
+  }
+  .pagination {
+    /* display: inline-block; */
+    float: right;  
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    /* padding: 8px 16px;  */
+    padding-right: 16px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .pagination p{
+    padding-left: 10px;
+  }
+  .page
+  {
+    /* display: flex;
+    justify-content: flex-end; */
+    /* position: absolute; */
+    display: flex;
+  justify-content: flex-end;
+
+    /* right: 50px;
+    top:100px;
+    left: 70%; */
+  
+  }
+  
+  .page a{
+      color: black;
+      cursor: pointer;
+      padding-right: 16px;
+  }
+  .page p{
+    padding-left: 10px;
+  }

@@ -1,0 +1,8 @@
+<h3>Click the flight which you want to delete</h3>
+<p style="color:red">Warning:This will delete the flight and its contents</p>
+<div class="row">
+    <div class="col-sm-2" *ngFor="let flight of flights; let i =index">
+            <a class="btn btn-danger" (click)="ondeleteflight(i)">Flight-{{flights[i].flightnumber}}</a>
+    </div>
+
+</div> 

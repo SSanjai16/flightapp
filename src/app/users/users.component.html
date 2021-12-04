@@ -1,0 +1,39 @@
+
+ <!-- <div  *ngIf="isloading" style="text-align: center;margin-top: 30px;"> 
+    <app-spinner></app-spinner> 
+    </div>-->
+  <div> 
+    <mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc">
+       
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let users" 
+        [innerHTML]="users.id"></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>User Name</mat-header-cell>
+        <mat-cell *matCellDef="let users" 
+        [innerHTML]="users.username"></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>E-Mail</mat-header-cell>
+        <mat-cell *matCellDef="let users" 
+        [innerHTML]="users.email"></mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> 
+      <mat-row *matRowDef="let row; columns:displayedColumns;"
+              > </mat-row>
+      </mat-table>
+      <mat-paginator [length]="length"
+                [pageSize]="10"
+                [pageSizeOptions]="[2,5,10,25,50]">
+  </mat-paginator> 
+  </div>
+   
+  
+  
+   
+  
+  
+  

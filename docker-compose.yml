@@ -1,0 +1,73 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    deploy: 
+      resources: 
+        limits:
+          memory: 700M
+        reservations:
+          memory: 500M
+    ports:
+      - 8007:8080
+    depends_on:
+      - mysqldb
+      - cassandra_db
+    networks: 
+      - webapp
+    
+  mysqldb:
+    image: "mysql:8.0.21"
+    restart: always
+    volumes:
+        - "./data_mysql:/var/lib/mysql"
+    ports:
+      - 3307:3306
+    deploy: 
+      resources: 
+        limits:
+          memory: 700M
+        reservations:
+          memory: 500M
+    environment:
+      MYSQL_ROOT_PASSWORD: 321san123
+      MYSQL_DATABASE: sanjai
+      MYSQL_USER: san
+      MYSQL_PASSWORD: san
+    networks:
+      - webapp
+  cassandra_db:
+    image: "cassandra:3.11.10"
+    deploy: 
+      resources: 
+        limits:
+          memory: 1000M
+        reservations:
+          memory: 800M
+    restart: always
+    volumes:
+      - "./data_cassandra:/var/lib/cassandra"
+    ports:
+      - 9042:9042
+    networks:
+      - webapp
+  redisdb:
+    image: redis:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+        reservations:
+          memory: 500M
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - "./data_redis:/var/lib/redis"
+      - "./redis.conf:/usr/local/etc/redis/redis.conf"
+    networks:
+      - webapp
+networks:
+    webapp:
+      driver: bridge

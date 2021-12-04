@@ -1,0 +1,27 @@
+.columnl {
+    float: left;
+    width: 50%;
+    padding: 20px;
+     /* Should be removed. Only for demonstration */
+  }
+  .columnr {
+    float: right;
+    width: 50%;
+    padding: 20px;
+     /* Should be removed. Only for demonstration */
+  }
+  /* .sample mat-selection-list {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color:black;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+  } */
+   .sample
+  {
+      padding: 10px;
+  }
+  

@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form  #f="ngForm" (ngSubmit)="onSubmitformf(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="numoftickets">Change the number of Business Class tickets in the flight</label>
+                    <input type="number" id="businessclass" class="form-control" name="businessclass" [ngModel]="businessclass" required 
+                    pattern="^[1-9]+[0-9]*$" #num="ngModel">
+                    <span class="help-block" *ngIf="!num.valid && num.touched">Please Enter valid number of tickets!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="numoftickets">Change the number of Economy Class tickets in the flight</label>
+                    <input type="number" id="economyclass" class="form-control" name="economyclass" [ngModel]="economyclass" required 
+                    pattern="^[1-9]+[0-9]*$" #num="ngModel">
+                    <span class="help-block" *ngIf="!num.valid && num.touched">Please Enter valid number of tickets!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 form-group">
+                <label for="source">Select the place of origin of the flight</label><br>
+                <!-- <h3>Select place of origin</h3> -->
+                <mat-form-field  style="background-color: white;">
+                <mat-label>Origin</mat-label>
+                <mat-select name="source" id="source" [(ngModel)]="origin" required>
+                <mat-option *ngFor="let city of cities" [value]="city.cityname" >
+                {{city.cityname}}
+                </mat-option>
+                </mat-select>
+                </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5 form-group">
+                    <label for="source">Select the Destination of the flight</label><br>
+                    <!-- <h3>Select place of origin</h3> -->
+                    <mat-form-field  style="background-color: white;">
+                    <mat-label>Destination</mat-label>
+                    <mat-select name="destination" id="destination" [(ngModel)]="destination" required >
+                    <mat-option *ngFor="let city of cities" [value]="city.cityname" >
+                    {{city.cityname}}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    </div>
+                    </div>
+
+        <mat-radio-group aria-label="Select the days at which the flight will fly : weekdays(monday-friday) / weekends(saturday and sunday)" >
+            <mat-radio-button value="alldays" (click)="onalldays()"[checked]="alldays">All days of the week</mat-radio-button>
+            <mat-radio-button value="weekends" (click)="onweekends()"[checked]="weekends">Weekends</mat-radio-button>
+            <mat-radio-button value="weekdays" (click)="onweekdays()"[checked]="weekdays">Weekdays</mat-radio-button>
+        </mat-radio-group><br>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Submit</button>
+            </div> 
+        </div>
+    </form>
+</div> 
+</div>
+<div class="alert alert-danger"  style="text-align: center;" *ngIf="error">{{error}}</div>

@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+             <div class="row">
+            <!--    <div class="col-sm-5 form-group">
+                    <label for="name">name</label>
+                    <input type="text" id="name" class="form-control" name="name" ngModel required #name="ngModel" >
+                    <span class="help-block" *ngIf="!name.valid && name.touched">Please Enter a valid name!</span>
+                </div>   -->
+                <div class="col-sm-6 form-group">
+                    <label for="numoftickets">Number of Tickets</label>
+                    <input type="number" id="numoftickets" class="form-control" name="numoftickets" ngModel required 
+                    pattern="^[1-9]+[0-9]*$" #num="ngModel">
+                    <span class="help-block" *ngIf="!num.valid && num.touched">Please Enter valid number of tickets!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="mealpref">Meals Required</label>
+                    <select name="mealspref" id="mealspref" [ngModel]="defaultmeal" required class="form-control" #meals="ngModel">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <span class="help-block" *ngIf="!meals.valid && meals.touched">Please Select an Option</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="bookingclass">Booking Class</label>
+                    <select id="branch" name="bookingclass" [ngModel]="defaultclass" required class="form-control" #bclass="ngModel">
+                      <option value="business">Business</option>
+                      <option value="economic">Economic</option>
+                    </select>
+                    <span class="help-block" *ngIf="!bclass.valid && bclass.touched">Please Select an Option</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="roundtripbutton"><p>Select the mode of booking</p></label>
+                </div>
+            </div>
+            <!-- <div class="row form-group">
+                <div class="col-sm-3">
+                    <a class="btn btn-primary" (click)=onRoundtrip()>{{ roundtripmode? 'One Way' : 'Round Trip'}}</a>
+                </div>
+            </div> -->
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="oneway" (click)="onOneway()" [checked]="true">One Way</mat-radio-button>
+                <mat-radio-button value="roundtrip" (click)="onRoundtrip()">Round Trip</mat-radio-button>
+              </mat-radio-group><br>
+            <!-- <div class="row" *ngIf="!roundtripmode">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="date">Enter the date for booking</label>
+                            <input type='date' [min]="minvalue" [max]="maxvalue" name="date" id="date"  class="form-control" [ngModel]="defaultdate | date:'yyyy-MM-dd'" required #date="ngModel">
+                            <span class="help-block" *ngIf="!date.valid && date.touched">Please Select a Date</span>
+                    </div>
+                </div>
+            </div> -->
+            <div *ngIf="!roundtripmode" class="row">
+                <br>
+                <mat-form-field appearance="fill">
+                    
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter" [min]="minvalue" [max]="maxvalue" name="date" id="date"  [ngModel]="defaultdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>                  
+            </div>
+            <!-- <div class="row" *ngIf="roundtripmode">
+                <div class="col-sm-3 form-group">
+                    <label for="fromdate">Enter the Departure Date</label>
+                        <input type='date' [min]="minvalue" [max]="maxvalue" name="date" id="date"  class="form-control" [ngModel]="defaultdate | date:'yyyy-MM-dd'" required #date="ngModel">
+                        <span class="help-block" *ngIf="!date.valid && date.touched">Please Select a Date</span>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="fromdate">Enter the Return Date</label>
+                        <input type='date' [min]="minreturnvalue" [max]="maxvalue" name="returndate" id="returndate"  class="form-control" [ngModel]="minreturnvalue | date:'yyyy-MM-dd'" required #date="ngModel">
+                        <span class="help-block" *ngIf="!date.valid && date.touched">Please Select a Date</span>
+                </div>    
+            </div> -->
+            <!-- <div class="row" *ngIf="roundtripmode">
+                <div class="col-xs-12 form-group"> -->
+                <div *ngIf="roundtripmode">    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [rangePicker]="picker" [dateFilter]="myFilter" [min]="minvalue" [max]="maxvalue">
+                          <input matStartDate placeholder="Start date" name="startdate" id="startdate"  [ngModel]="minvalue | date:'yyyy-MM-dd'">
+                          <input matEndDate placeholder="End date" name="returndate" id="returndate"  [ngModel]="minreturnvalue | date:'yyyy-MM-dd'">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </div>
+                      
+                <!-- </div>
+            </div> -->
+           
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">Submit</button>
+                    <button class="btn btn-primary" type="button" (click)="onClear(f)">Clear</button>
+                </div> 
+            </div>
+        </form>
+    </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
